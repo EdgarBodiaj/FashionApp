@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -11,6 +12,8 @@ public class PlaceObjectonPlane : MonoBehaviour
     private bool placementPoseisValid;
     private bool isObjectPlaced;
 
+    public TMP_Text debugText;
+
     //Rotator script added
 
     public GameObject positionIndicator;
@@ -19,12 +22,15 @@ public class PlaceObjectonPlane : MonoBehaviour
 
     private void Awake(){
         raycastManager = GetComponent<ARRaycastManager>();
+        if (debugText != null) debugText = GameObject.FindGameObjectWithTag("Debug").GetComponent<TMP_Text>();
+        debugText.text = "Debug started";
     }
 
     // Update is called once per frame
     void Update()
     {
         if(!isObjectPlaced){
+
             UpdatePlacementPose();
             if(placementPoseisValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began){
                 PlaceObject();
