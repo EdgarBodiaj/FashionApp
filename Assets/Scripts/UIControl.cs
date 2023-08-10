@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class UIControl : MonoBehaviour
 {
@@ -13,14 +14,21 @@ public class UIControl : MonoBehaviour
 
     public GameObject Tool_TopLightRotationControl;
 
-    public List<string> Tool_RotateDir;
-    public Quaternion Tool_RotationQuart;
-    public Vector3 Tool_EulerRot;
+    public GameObject Tool_Light_Brightness;
+    public GameObject Tool_Light_Temperature;
+
+    List<string> Tool_RotateDir;
+    Vector3 Tool_EulerRot;
 
     private void Start()
     {
         Tool_ToplightRotationSphere = Tool_TopLight.GetComponentInParent<Transform>().parent.gameObject;
         Tool_RotateDir = new List<string>();
+        GraphicsSettings.lightsUseColorTemperature = true;
+        GraphicsSettings.lightsUseLinearIntensity = true;
+        Tool_TopLight.GetComponent<Light>().useColorTemperature = true;
+        Tool_Torch.GetComponent<Light>().useColorTemperature = true;
+        
     }
 
     private void FixedUpdate()
@@ -36,7 +44,6 @@ public class UIControl : MonoBehaviour
             if (Tool_RotateDir.Exists(x => x == "01")) Tool_EulerRot.z = -2;
             //Positive Z
             else if (Tool_RotateDir.Exists(x => x == "10")) Tool_EulerRot.z = 2;
-            Debug.Log(Tool_EulerRot);
             Tool_EulerRot.y = 0;
             Tool_ToplightRotationSphere.transform.Rotate(Tool_EulerRot);
         }
@@ -45,6 +52,19 @@ public class UIControl : MonoBehaviour
     private void Update()
     {
         
+    }
+
+    public void Tool_Light_SetTemperature(float temp)
+    {
+        Debug.Log(temp);
+        Tool_TopLight.GetComponent<Light>().colorTemperature = temp;
+        Tool_Torch.GetComponent<Light>().colorTemperature = temp;
+    }
+
+    public void Tool_Light_SetBrightness(float bright)
+    {
+        Tool_TopLight.GetComponent<Light>().intensity = bright;
+        Tool_Torch.GetComponent<Light>().intensity = bright;
     }
 
     public void Toolbar_ToggleToolbox()
@@ -88,5 +108,15 @@ public class UIControl : MonoBehaviour
     public void Toolbar_ToggleLightAngleControl()
     {
         Tool_TopLightRotationControl.SetActive(!Tool_TopLightRotationControl.activeInHierarchy);
+    }
+
+    public void Toolbar_Light_ToggleTemperature()
+    {
+        Tool_Light_Brightness.SetActive(!Tool_Light_Brightness.activeInHierarchy);
+    }
+
+    public void Toolbar_Light_ToggleBrightness()
+    {
+        Tool_Light_Temperature.SetActive(!Tool_Light_Temperature.activeInHierarchy);
     }
 }
