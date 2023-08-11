@@ -112,11 +112,11 @@ public class UIControl : MonoBehaviour
 
     public void Toolbar_Light_ToggleTemperature()
     {
-        Tool_Light_Brightness.SetActive(!Tool_Light_Brightness.activeInHierarchy);
+        Tool_Light_Temperature.SetActive(!Tool_Light_Temperature.activeInHierarchy);
     }
 
     public void Toolbar_Light_ToggleBrightness()
     {
-        Tool_Light_Temperature.SetActive(!Tool_Light_Temperature.activeInHierarchy);
+        Tool_Light_Brightness.SetActive(!Tool_Light_Brightness.activeInHierarchy);
     }
 }
