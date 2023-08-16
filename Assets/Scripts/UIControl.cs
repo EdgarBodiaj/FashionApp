@@ -17,6 +17,14 @@ public class UIControl : MonoBehaviour
     public GameObject Tool_Light_Brightness;
     public GameObject Tool_Light_Temperature;
 
+    public GameObject Menu_Style;
+
+    public GameObject Menu_Hamburger;
+
+    public GameObject Menu_Dialog;
+
+    public GameObject Object_Style_CurrentActive;
+
     List<string> Tool_RotateDir;
     Vector3 Tool_EulerRot;
 
@@ -47,11 +55,6 @@ public class UIControl : MonoBehaviour
             Tool_EulerRot.y = 0;
             Tool_ToplightRotationSphere.transform.Rotate(Tool_EulerRot);
         }
-    }
-
-    private void Update()
-    {
-        
     }
 
     public void Tool_Light_SetTemperature(float temp)
@@ -118,5 +121,60 @@ public class UIControl : MonoBehaviour
     public void Toolbar_Light_ToggleBrightness()
     {
         Tool_Light_Brightness.SetActive(!Tool_Light_Brightness.activeInHierarchy);
+    }
+
+    public void Menu_ToggleHamburgerMenu()
+    {
+        Menu_Hamburger.SetActive(!Menu_Hamburger.activeInHierarchy);
+    }
+
+    public void Menu_ToggleStyleMenu()
+    {
+
+    }
+
+    public void Menu_SetCurrentStyle()
+    {
+
+    }
+
+    public void Toolbar_ToggleScale()
+    {
+
+    }
+
+    public void Toolbar_ScaleCurrentObject()
+    {
+
+    }
+
+    public void Toolbar_ToggleRotate()
+    {
+
+    }
+
+    public void Toolbar_RotateCurrentObject()
+    {
+
+    }
+
+    public void Toolbar_ToggleMove()
+    {
+
+    }
+
+    public void Toolbar_MoveCurrentObject()
+    {
+
+    }
+
+    public void Toolbar_DeleteDialog()
+    {
+        Menu_Dialog.SetActive(!Menu_Dialog.activeInHierarchy);
+    }
+
+    public void Toolbar_DeleteCurrentObject()
+    {
+
     }
 }
