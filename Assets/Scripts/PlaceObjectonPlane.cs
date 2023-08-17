@@ -40,7 +40,7 @@ public class PlaceObjectonPlane : MonoBehaviour
 
             UpdatePlacementPose();
             if(placementPoseisValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began){
-                if(UIControl.Object_Style_CurrentActive != null) PlaceObject();
+                if(UIControl.Object_Style_CurrentActive == null) PlaceObject();
             }
         }
     }
