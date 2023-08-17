@@ -18,9 +18,7 @@ public class UIControl : MonoBehaviour
     public GameObject Tool_Light_Temperature;
 
     public GameObject Menu_Style;
-
     public GameObject Menu_Hamburger;
-
     public GameObject Menu_Dialog;
 
     public GameObject Object_Style_CurrentActive;
@@ -130,7 +128,7 @@ public class UIControl : MonoBehaviour
 
     public void Menu_ToggleStyleMenu()
     {
-
+        Menu_Style.SetActive(!Menu_Style.activeInHierarchy);
     }
 
     public void Menu_SetCurrentStyle()
@@ -173,8 +171,18 @@ public class UIControl : MonoBehaviour
         Menu_Dialog.SetActive(!Menu_Dialog.activeInHierarchy);
     }
 
-    public void Toolbar_DeleteCurrentObject()
+    public void Toolbar__Dialog_DeleteCurrentObject()
     {
 
+    }
+    
+    public void Toolbar_Dialog_CancelDelete()
+    {
+
+    }
+
+    public void Control_SetActiveObject(GameObject obj)
+    {
+        Object_Style_CurrentActive = obj;
     }
 }

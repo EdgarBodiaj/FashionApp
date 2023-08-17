@@ -20,6 +20,13 @@ public class PlaceObjectonPlane : MonoBehaviour
     public GameObject prefabToPlace;
     public Camera ARCamera;
 
+    public UIControl UIControl;
+
+    private void Start()
+    {
+       UIControl = GameObject.FindGameObjectWithTag("Control").GetComponent<UIControl>(); 
+    }
+
     private void Awake(){
         raycastManager = GetComponent<ARRaycastManager>();
         if (debugText != null) debugText = GameObject.FindGameObjectWithTag("Debug").GetComponent<TMP_Text>();
@@ -33,7 +40,7 @@ public class PlaceObjectonPlane : MonoBehaviour
 
             UpdatePlacementPose();
             if(placementPoseisValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began){
-                PlaceObject();
+                if(UIControl.Object_Style_CurrentActive != null) PlaceObject();
             }
         }
     }
@@ -61,7 +68,8 @@ public class PlaceObjectonPlane : MonoBehaviour
     }
 
     private void PlaceObject(){
-        Instantiate(prefabToPlace, placementPose.position, placementPose.rotation);
+        GameObject newObj =  Instantiate(prefabToPlace, placementPose.position, placementPose.rotation);
+        UIControl.Control_SetActiveObject(newObj);
         isObjectPlaced = true;
         positionIndicator.SetActive(false); 
     }
