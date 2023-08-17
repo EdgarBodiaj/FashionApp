@@ -11,6 +11,8 @@ private GameObject _prefabToPlace;
 
 public ChoiceManager cm;
 
+public UIControl Control;
+
 // Cache ARRaycastManager GameObject from ARCoreSession
 private ARRaycastManager _raycastManager;
 private ARAnchorManager _anchorManager;
@@ -56,7 +58,7 @@ ARAnchor CreateAnchor(in ARRaycastHit hit) {
         if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began){
         return; 
         }
-
+        if (Control.Object_Style_CurrentActive != null) return;
         if (_raycastManager.Raycast(touch.position, Hits, TrackableType.Planes)) {
             var hitPose = Hits[0].pose;
             Debug.Log("trying to instasiate anchor");
@@ -71,6 +73,8 @@ ARAnchor CreateAnchor(in ARRaycastHit hit) {
             clo.transform.localEulerAngles = Vector3.zero;
             clo.transform.localPosition = Vector3.zero;
             go.GetComponent<Renderer>().enabled = false;
+
+            Control.Control_SetActiveObject(clo);
 
             Debug.Log($"Instantiated on: {Hits[0].hitType}");
         } 
