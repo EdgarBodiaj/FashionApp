@@ -66,13 +66,13 @@ public class UIControl : MonoBehaviour
         {
             Tool_MovePos = Object_Style_CurrentActive != null ? Object_Style_CurrentActive.transform.position : new Vector3(0,0,0);
             //Positive X
-            if (Tool_MoveDir.Exists(x => x == "00")) Tool_MovePos.x += 2;
+            if (Tool_MoveDir.Exists(x => x == "00")) Tool_MovePos.x += 0.002f;
             //Negative X
-            else if (Tool_MoveDir.Exists(x => x == "11")) Tool_MovePos.x -= 2;
+            else if (Tool_MoveDir.Exists(x => x == "11")) Tool_MovePos.x -= 0.002f;
             //Negative Z
-            if (Tool_MoveDir.Exists(x => x == "01")) Tool_MovePos.z -= 2;
+            if (Tool_MoveDir.Exists(x => x == "01")) Tool_MovePos.z -= 0.002f;
             //Positive Z
-            else if (Tool_MoveDir.Exists(x => x == "10")) Tool_MovePos.z += 2;
+            else if (Tool_MoveDir.Exists(x => x == "10")) Tool_MovePos.z += 0.002f;
 
             Object_Style_CurrentActive.transform.position = Tool_MovePos;
         }
@@ -164,9 +164,9 @@ public class UIControl : MonoBehaviour
         Menu_Style.SetActive(!Menu_Style.activeInHierarchy);
     }
 
-    public void Menu_SetCurrentStyle()
+    public void Menu_SetCurrentStyle(int i)
     {
-
+        Debug.Log("Style " + i + " pressed");
     }
 
     public void Toolbar_ToggleScale()
@@ -202,17 +202,19 @@ public class UIControl : MonoBehaviour
 
     public void Toolbar_DeleteDialog()
     {
-        Menu_Dialog.SetActive(!Menu_Dialog.activeInHierarchy);
+        Menu_Dialog.SetActive(true);
     }
 
-    public void Toolbar__Dialog_DeleteCurrentObject()
+    public void Toolbar_Dialog_DeleteCurrentObject()
     {
-
+        Destroy(Object_Style_CurrentActive);
+        Object_Style_CurrentActive = null;
+        Menu_Dialog.SetActive(false);
     }
     
     public void Toolbar_Dialog_CancelDelete()
     {
-
+        Menu_Dialog.SetActive(false);
     }
 
     public void Control_SetActiveObject(GameObject obj)
