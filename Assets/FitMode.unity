@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311915, g: 0.3807396, b: 0.35872662, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3726,9 +3726,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 669401374}
-        m_TargetAssemblyTypeName: CommentToggle, Assembly-CSharp
-        m_MethodName: ToggleMenu
+      - m_Target: {fileID: 1985308839}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: Menu_ToggleComments
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5659,7 +5659,6 @@ GameObject:
   - component: {fileID: 669401377}
   - component: {fileID: 669401376}
   - component: {fileID: 669401375}
-  - component: {fileID: 669401374}
   m_Layer: 5
   m_Name: CommentPanel
   m_TagString: Untagged
@@ -5689,18 +5688,6 @@ RectTransform:
   m_AnchoredPosition: {x: -760.9795, y: -55.900024}
   m_SizeDelta: {x: -1986.77, y: -259.9}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &669401374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669401372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0a02f0f9e51542b7a67241f4af2416b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &669401375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7295,9 +7282,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 284822281}
-        m_TargetAssemblyTypeName: StyleMenuToggle, Assembly-CSharp
-        m_MethodName: ToggleMenu
+      - m_Target: {fileID: 1985308839}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
+        m_MethodName: Menu_ToggleStyleMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14577,6 +14564,7 @@ MonoBehaviour:
   Tool_Object_Move: {fileID: 367153301}
   Tool_Object_Rotate: {fileID: 1521221038}
   Tool_Object_Scale: {fileID: 884723153}
+  Menu_Comments: {fileID: 669401372}
   Menu_Style: {fileID: 284822277}
   Menu_Hamburger: {fileID: 1548161964}
   Menu_Dialog: {fileID: 1165925821}

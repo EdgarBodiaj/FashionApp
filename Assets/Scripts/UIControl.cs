@@ -21,6 +21,7 @@ public class UIControl : MonoBehaviour
     public GameObject Tool_Object_Rotate;
     public GameObject Tool_Object_Scale;
 
+    public GameObject Menu_Comments;
     public GameObject Menu_Style;
     public GameObject Menu_Hamburger;
     public GameObject Menu_Dialog;
@@ -89,23 +90,6 @@ public class UIControl : MonoBehaviour
         Tool_TopLight.GetComponent<Light>().intensity = bright;
         Tool_Torch.GetComponent<Light>().intensity = bright;
     }
-
-    public void Toolbar_ToggleToolbox()
-    {
-        Toolbar_Bottom.SetActive(!Toolbar_Bottom.activeInHierarchy);
-        Toolbar_Right.SetActive(!Toolbar_Right.activeInHierarchy);
-    }
-
-    public void Toolbar_ToggleTorch()
-    {
-        Tool_Torch.SetActive(!Tool_Torch.activeInHierarchy);
-    }
-
-    public void Toolbar_Toplight_ToggleToolbar()
-    {
-        Tool_TopLightRotationControl.SetActive(!Tool_TopLightRotationControl.activeInHierarchy);
-    }
-
     public void Toolbar_Toplight_Rotate(string dir)
     {
         //Direction Code:
@@ -133,47 +117,10 @@ public class UIControl : MonoBehaviour
     {
         Tool_ToplightRotationSphere.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
-
-    public void Toolbar_Toplight_Toggle()
-    {
-        Tool_TopLight.SetActive(!Tool_TopLight.activeInHierarchy);
-    }
-
-    public void Toolbar_ToggleLightAngleControl()
-    {
-        Tool_TopLightRotationControl.SetActive(!Tool_TopLightRotationControl.activeInHierarchy);
-    }
-
-    public void Toolbar_Light_ToggleTemperature()
-    {
-        Tool_Light_Temperature.SetActive(!Tool_Light_Temperature.activeInHierarchy);
-    }
-
-    public void Toolbar_Light_ToggleBrightness()
-    {
-        Tool_Light_Brightness.SetActive(!Tool_Light_Brightness.activeInHierarchy);
-    }
-
-    public void Menu_ToggleHamburgerMenu()
-    {
-        Menu_Hamburger.SetActive(!Menu_Hamburger.activeInHierarchy);
-    }
-
-    public void Menu_ToggleStyleMenu()
-    {
-        Menu_Style.SetActive(!Menu_Style.activeInHierarchy);
-    }
-
     public void Menu_SetCurrentStyle(int i)
     {
         Debug.Log("Style " + i + " pressed");
     }
-
-    public void Toolbar_ToggleScale()
-    {
-        Tool_Object_Scale.SetActive(!Tool_Object_Scale.activeInHierarchy);
-    }
-
     public void Toolbar_ScaleCurrentObject(float scale)
     {
         if(Object_Style_CurrentActive != null)
@@ -181,12 +128,6 @@ public class UIControl : MonoBehaviour
             Object_Style_CurrentActive.transform.localScale = new Vector3(scale, scale, scale);
         }
     }
-
-    public void Toolbar_ToggleRotate()
-    {
-        Tool_Object_Rotate.SetActive(!Tool_Object_Rotate.activeInHierarchy);
-    }
-
     public void Toolbar_RotateCurrentObject(float y)
     {
         if(Object_Style_CurrentActive != null)
@@ -194,31 +135,129 @@ public class UIControl : MonoBehaviour
             Object_Style_CurrentActive.transform.rotation = Quaternion.Euler(0, y, 0);
         }
     }
-
-    public void Toolbar_ToggleMove()
-    {
-        Tool_Object_Move.SetActive(!Tool_Object_Move.activeInHierarchy);
-    }
-
     public void Toolbar_DeleteDialog()
     {
         Menu_Dialog.SetActive(true);
     }
-
     public void Toolbar_Dialog_DeleteCurrentObject()
     {
         Destroy(Object_Style_CurrentActive);
         Object_Style_CurrentActive = null;
         Menu_Dialog.SetActive(false);
     }
-    
     public void Toolbar_Dialog_CancelDelete()
     {
         Menu_Dialog.SetActive(false);
     }
-
     public void Control_SetActiveObject(GameObject obj)
     {
         Object_Style_CurrentActive = obj;
+    }
+
+    //Toggles
+    void Toolbar_DisableOtherUI()
+    {
+        Tool_Torch.SetActive(false);
+        Tool_TopLight.SetActive(false);
+        Tool_ToplightRotationSphere.SetActive(false);
+
+        Tool_TopLightRotationControl.SetActive(false);
+
+        Tool_Light_Brightness.SetActive(false);
+        Tool_Light_Temperature.SetActive(false);
+
+        Tool_Object_Move.SetActive(false);
+        Tool_Object_Rotate.SetActive(false);
+        Tool_Object_Scale.SetActive(false);
+
+        Menu_Comments.SetActive(false);
+        Menu_Style.SetActive(false);
+        Menu_Hamburger.SetActive(false);
+    }
+
+    public void Toolbar_ToggleMove()
+    {
+        Toolbar_DisableOtherUI();
+        Tool_Object_Move.SetActive(!Tool_Object_Move.activeInHierarchy);
+    }
+    public void Toolbar_ToggleRotate()
+    {
+        Toolbar_DisableOtherUI();
+
+        Tool_Object_Rotate.SetActive(!Tool_Object_Rotate.activeInHierarchy);
+    }
+    public void Toolbar_ToggleScale()
+    {
+        Toolbar_DisableOtherUI();
+
+        Tool_Object_Scale.SetActive(!Tool_Object_Scale.activeInHierarchy);
+    }
+    public void Toolbar_Toplight_Toggle()
+    {
+        Toolbar_DisableOtherUI();
+
+        Tool_TopLight.SetActive(!Tool_TopLight.activeInHierarchy);
+    }
+
+    public void Toolbar_ToggleLightAngleControl()
+    {
+        Toolbar_DisableOtherUI();
+
+        Tool_TopLightRotationControl.SetActive(!Tool_TopLightRotationControl.activeInHierarchy);
+    }
+
+    public void Toolbar_Light_ToggleTemperature()
+    {
+        Toolbar_DisableOtherUI();
+
+        Tool_Light_Temperature.SetActive(!Tool_Light_Temperature.activeInHierarchy);
+    }
+
+    public void Toolbar_Light_ToggleBrightness()
+    {
+        Toolbar_DisableOtherUI();
+
+        Tool_Light_Brightness.SetActive(!Tool_Light_Brightness.activeInHierarchy);
+    }
+
+    public void Menu_ToggleHamburgerMenu()
+    {
+        Toolbar_DisableOtherUI();
+
+        Menu_Hamburger.SetActive(!Menu_Hamburger.activeInHierarchy);
+    }
+
+    public void Menu_ToggleStyleMenu()
+    {
+        Toolbar_DisableOtherUI();
+
+        Menu_Style.SetActive(!Menu_Style.activeInHierarchy);
+    }
+    public void Toolbar_ToggleToolbox()
+    {
+        Toolbar_Bottom.SetActive(!Toolbar_Bottom.activeInHierarchy);
+        Toolbar_Right.SetActive(!Toolbar_Right.activeInHierarchy);
+    }
+
+    public void Toolbar_ToggleTorch()
+    {
+        Toolbar_DisableOtherUI();
+
+        Tool_Torch.SetActive(!Tool_Torch.activeInHierarchy);
+    }
+
+    public void Toolbar_Toplight_ToggleToolbar()
+    {
+        Toolbar_DisableOtherUI();
+
+        Tool_TopLightRotationControl.SetActive(!Tool_TopLightRotationControl.activeInHierarchy);
+    }
+
+    public void Menu_ToggleComments()
+    {
+        Toolbar_DisableOtherUI();
+
+        Menu_Comments.SetActive(!Menu_Comments.activeInHierarchy);
+
     }
 }
