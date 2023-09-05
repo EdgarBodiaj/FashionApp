@@ -177,61 +177,62 @@ public class UIControl : MonoBehaviour
 
     public void Toolbar_ToggleMove()
     {
+        bool State = Tool_Object_Move.activeInHierarchy;
         Toolbar_DisableOtherUI();
-        Tool_Object_Move.SetActive(!Tool_Object_Move.activeInHierarchy);
+        Tool_Object_Move.SetActive(!State);
     }
     public void Toolbar_ToggleRotate()
     {
+        bool State = Tool_Object_Rotate.activeInHierarchy;
         Toolbar_DisableOtherUI();
-
-        Tool_Object_Rotate.SetActive(!Tool_Object_Rotate.activeInHierarchy);
+        Tool_Object_Rotate.SetActive(!State);
     }
     public void Toolbar_ToggleScale()
     {
+        bool State = Tool_Object_Scale.activeInHierarchy;
         Toolbar_DisableOtherUI();
-
-        Tool_Object_Scale.SetActive(!Tool_Object_Scale.activeInHierarchy);
+        Tool_Object_Scale.SetActive(!State);
     }
     public void Toolbar_Toplight_Toggle()
     {
+        bool State = Tool_TopLight.activeInHierarchy;
         Toolbar_DisableOtherUI();
-
-        Tool_TopLight.SetActive(!Tool_TopLight.activeInHierarchy);
+        Tool_TopLight.SetActive(!State);
     }
 
     public void Toolbar_ToggleLightAngleControl()
     {
+        bool State = Tool_TopLightRotationControl.activeInHierarchy;
         Toolbar_DisableOtherUI();
-
-        Tool_TopLightRotationControl.SetActive(!Tool_TopLightRotationControl.activeInHierarchy);
+        Tool_TopLightRotationControl.SetActive(!State);
     }
 
     public void Toolbar_Light_ToggleTemperature()
     {
+        bool State = Tool_Light_Temperature.activeInHierarchy;
         Toolbar_DisableOtherUI();
-
-        Tool_Light_Temperature.SetActive(!Tool_Light_Temperature.activeInHierarchy);
+        Tool_Light_Temperature.SetActive(!State);
     }
 
     public void Toolbar_Light_ToggleBrightness()
     {
+        bool State = Tool_Light_Brightness.activeInHierarchy;
         Toolbar_DisableOtherUI();
-
-        Tool_Light_Brightness.SetActive(!Tool_Light_Brightness.activeInHierarchy);
+        Tool_Light_Brightness.SetActive(!State);
     }
 
     public void Menu_ToggleHamburgerMenu()
     {
+        bool State = Menu_Hamburger.activeInHierarchy;
         Toolbar_DisableOtherUI();
-
-        Menu_Hamburger.SetActive(!Menu_Hamburger.activeInHierarchy);
+        Menu_Hamburger.SetActive(!State);
     }
 
     public void Menu_ToggleStyleMenu()
     {
+        bool State = Menu_Style.activeInHierarchy;
         Toolbar_DisableOtherUI();
-
-        Menu_Style.SetActive(!Menu_Style.activeInHierarchy);
+        Menu_Style.SetActive(!State);
     }
     public void Toolbar_ToggleToolbox()
     {
@@ -241,23 +242,23 @@ public class UIControl : MonoBehaviour
 
     public void Toolbar_ToggleTorch()
     {
+        bool State = Tool_Torch.activeInHierarchy;
         Toolbar_DisableOtherUI();
-
-        Tool_Torch.SetActive(!Tool_Torch.activeInHierarchy);
+        Tool_Torch.SetActive(!State);
     }
 
     public void Toolbar_Toplight_ToggleToolbar()
     {
+        bool State = Tool_TopLightRotationControl.activeInHierarchy;
         Toolbar_DisableOtherUI();
-
-        Tool_TopLightRotationControl.SetActive(!Tool_TopLightRotationControl.activeInHierarchy);
+        Tool_TopLightRotationControl.SetActive(!State);
     }
 
     public void Menu_ToggleComments()
     {
+        bool State = Menu_Comments.activeInHierarchy;
         Toolbar_DisableOtherUI();
-
-        Menu_Comments.SetActive(!Menu_Comments.activeInHierarchy);
+        Menu_Comments.SetActive(!State);
 
     }
 }
