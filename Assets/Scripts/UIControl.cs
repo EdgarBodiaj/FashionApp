@@ -5,6 +5,8 @@ using UnityEngine.Rendering;
 
 public class UIControl : MonoBehaviour
 {
+    public Canvas canvas;
+    public GameObject Screenshot;
     public GameObject Toolbar_Bottom;
     public GameObject Toolbar_Right;
 
@@ -148,6 +150,14 @@ public class UIControl : MonoBehaviour
     public void Toolbar_Dialog_CancelDelete()
     {
         Menu_Dialog.SetActive(false);
+    }
+
+    public void TakeScreenshot(){
+        if (canvas != null){
+            canvas.enabled = false;
+            ScreenCapture.CaptureScreenshot("screenshot.png");
+            canvas.enabled = true;
+        }
     }
     public void Control_SetActiveObject(GameObject obj)
     {
