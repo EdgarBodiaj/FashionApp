@@ -23,10 +23,10 @@ public class CommentMaker : MonoBehaviour
         Touch touch;
         if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
         {
-            Debug.Log("Screen not touched");
+            //Debug.Log("Screen not touched");
             return;
         }
-        Debug.Log("Screen touched!------------------------------------");
+        //Debug.Log("Screen touched!------------------------------------");
         if(raycastManager.Raycast(touch.position, Hits))
         {
             DebugText.text = Hits[0].pose.ToString() + ", hit count: " + Hits.Count;

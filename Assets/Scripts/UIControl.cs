@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class UIControl : MonoBehaviour
 {
-    public Canvas canvas;
+    public GameObject canvas;
     public GameObject Screenshot;
     public GameObject Toolbar_Bottom;
     public GameObject Toolbar_Right;
@@ -154,11 +154,24 @@ public class UIControl : MonoBehaviour
 
     public void TakeScreenshot(){
         if (canvas != null){
-            canvas.enabled = false;
-            ScreenCapture.CaptureScreenshot("screenshot.png");
-            canvas.enabled = true;
+            Debug.Log("Capture Ready");
+            string folderPath = "Assets/Screenshots/";
+            canvas.SetActive(false);
+            if (!System.IO.Directory.Exists(folderPath)) // if this path does not exist yet
+                System.IO.Directory.CreateDirectory(folderPath);  // it will get created
+
+            
+            //ScreenCapture.CaptureScreenshot("screenshot.png");
+            var screenshotName = "Screenshot_" + System.DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss") + ".png";
+            ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(folderPath, screenshotName), 2);
+            Debug.Log(folderPath + screenshotName);
+
+            canvas.SetActive(true) ;
         }
     }
+
+
+
     public void Control_SetActiveObject(GameObject obj)
     {
         Object_Style_CurrentActive = obj;
