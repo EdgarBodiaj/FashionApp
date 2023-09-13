@@ -76,7 +76,7 @@ public class UIControl : MonoBehaviour
             if (Tool_MoveDir.Exists(x => x == "01")) Tool_MovePos.z -= 0.002f;
             //Positive Z
             else if (Tool_MoveDir.Exists(x => x == "10")) Tool_MovePos.z += 0.002f;
-
+            
             Object_Style_CurrentActive.transform.position = Tool_MovePos;
         }
     }
@@ -155,21 +155,20 @@ public class UIControl : MonoBehaviour
     public void TakeScreenshot(){
         if (canvas != null){
             Debug.Log("Capture Ready");
-            string folderPath = "Assets/Screenshots/";
-            canvas.SetActive(false);
-            if (!System.IO.Directory.Exists(folderPath)) // if this path does not exist yet
-                System.IO.Directory.CreateDirectory(folderPath);  // it will get created
 
-            
-            //ScreenCapture.CaptureScreenshot("screenshot.png");
-            var screenshotName = "Screenshot_" + System.DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss") + ".png";
-            ScreenCapture.CaptureScreenshot(System.IO.Path.Combine(folderPath, screenshotName), 2);
-            Debug.Log(folderPath + screenshotName);
+            Texture2D ss = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+            ss.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+            ss.Apply();
 
-            canvas.SetActive(true) ;
+            // Save the screenshot to Gallery/Photos
+            NativeGallery.Permission permission = NativeGallery.SaveImageToGallery(ss, "GalleryTest", "Image.png", (success, path) => Debug.Log("Media save result: " + success + " " + path));
+
+            Debug.Log("Permission result: " + permission);
+
+            // To avoid memory leaks
+            Destroy(ss);
         }
     }
-
 
 
     public void Control_SetActiveObject(GameObject obj)
