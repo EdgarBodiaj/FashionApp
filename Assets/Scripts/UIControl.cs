@@ -23,6 +23,8 @@ public class UIControl : MonoBehaviour
     public GameObject Tool_Object_Rotate;
     public GameObject Tool_Object_Scale;
 
+    public GameObject Tool_ColourPicker;
+
     public GameObject Menu_Comments;
     public GameObject Menu_Style;
     public GameObject Menu_Hamburger;
@@ -266,6 +268,13 @@ public class UIControl : MonoBehaviour
         bool State = Tool_Torch.activeInHierarchy;
         Toolbar_DisableOtherUI();
         Tool_Torch.SetActive(!State);
+    }
+
+    public void Toolbar_ToggleColourPicker()
+    {
+        bool State = Tool_ColourPicker.activeInHierarchy;
+        Toolbar_DisableOtherUI();
+        Tool_ColourPicker.SetActive(!State);
     }
 
     public void Toolbar_Toplight_ToggleToolbar()

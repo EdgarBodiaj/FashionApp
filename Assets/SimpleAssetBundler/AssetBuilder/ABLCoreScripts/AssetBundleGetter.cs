@@ -33,7 +33,7 @@ public class AssetBundleGetter : MonoBehaviour
     public UnityEvent worldReady;
 
     private bool downloading = false;
-
+    List<string> Register;
 
     private bool worldDownloaded = false;
 
@@ -45,10 +45,15 @@ public class AssetBundleGetter : MonoBehaviour
     {
         downloadFailed.AddListener(LogDownloadFailed);
         assetbundleDatabaseReady.AddListener(LogAssetBundleDBReady);
-
+        Register = new List<string>();
         //lets unload any existing ones
         //AssetBundle.UnloadAllAssetBundles(true);
         StartCoroutine(GetRegister());
+    }
+
+    public List<string> askRegister()
+    {
+        return Register;
     }
 
     public string[] getOptions()
@@ -115,6 +120,10 @@ public class AssetBundleGetter : MonoBehaviour
             register = request.downloadHandler.text;
             options = register.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
             dumpStrings(options);
+            foreach (var item in options)
+            {
+                GetComponent<StylesPopulteMenu>().AddCard(item);
+            }
             registerDownloaded = true;
             assetbundleDatabaseReady.Invoke();
         }
@@ -166,8 +175,9 @@ public class AssetBundleGetter : MonoBehaviour
 
             foreach (string name in prefabs)
             {
-                GameObject parent = GameObject.Instantiate(bundle.LoadAsset<GameObject>(name), parentForWorld);
+                GameObject parent = Instantiate(bundle.LoadAsset<GameObject>(name), parentForWorld);
                 moveToStartPosition(parent);
+                parent.transform.localRotation = new Quaternion(0,180,0,0);
             }
 
             if (scriptRegister != "")

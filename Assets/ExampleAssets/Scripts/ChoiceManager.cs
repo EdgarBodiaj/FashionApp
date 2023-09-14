@@ -17,7 +17,7 @@ public class ChoiceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setCurrentClothing(0);
+        //setCurrentClothing(0);
         LoadedAsset = GameObject.FindGameObjectWithTag("LoadedAsset");
     }
 
@@ -43,6 +43,7 @@ public class ChoiceManager : MonoBehaviour
         GameObject child = LoadedAsset.GetComponentsInChildren<Transform>()[0].gameObject;
         child.transform.parent = arCamera;
         //child.transform.localPosition = new Vector3(0, 0, -100);
+        child.transform.rotation = new Quaternion(0,180,0,0);
         currentClothing = child.name;
         Debug.Log("Created" + child.name);
     }
@@ -56,6 +57,7 @@ public class ChoiceManager : MonoBehaviour
             GameObject go = Instantiate(prefabs[s]);
             go.transform.parent = arCamera;
             go.transform.localPosition = new Vector3(0,0,-100);
+            go.transform.localRotation = new Quaternion(0,180,0,0);
             currentClothing = go.name;
             Debug.Log("Created" + go.name);
 

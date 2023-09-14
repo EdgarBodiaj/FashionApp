@@ -9,7 +9,7 @@ public class Button_StyleMenu : MonoBehaviour
     public string Name;
     public int ID;
     public string Description;
-    public int size;
+    public string size;
 
     public TMP_Text Title;
     public TMP_Text DescriptionText;
@@ -27,7 +27,7 @@ public class Button_StyleMenu : MonoBehaviour
         GetComponentInChildren<Button>().onClick.AddListener(() => loadAsset(Name));
         Title.text = Name;
         DescriptionText.text = Description;
-        Size.text = "" + size;
+        Size.text = size;
     }
 
     void loadAsset(string asset)
