@@ -66,7 +66,8 @@ ARAnchor CreateAnchor(in ARRaycastHit hit) {
             Debug.Log("done");
 
             //find corret clothing item in scene
-            GameObject clo = GameObject.Find(cm.currentClothing);
+            //GameObject clo = GameObject.Find(cm.currentClothing);
+            GameObject clo = GameObject.FindGameObjectWithTag("LoadedAsset").GetComponentsInChildren<Transform>()[0].gameObject;
             Debug.Log("Found:"+clo.name);
             //attach to our newly instnsiated object and zero it's local position
             clo.transform.parent = go.transform;

@@ -179,9 +179,8 @@ public class UIControl : MonoBehaviour
     //Toggles
     void Toolbar_DisableOtherUI()
     {
-        Tool_Torch.SetActive(false);
-        Tool_TopLight.SetActive(false);
-        Tool_ToplightRotationSphere.SetActive(false);
+        //Tool_Torch.SetActive(false);
+        //Tool_TopLight.SetActive(false);
 
         Tool_TopLightRotationControl.SetActive(false);
 
