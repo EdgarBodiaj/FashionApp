@@ -6,24 +6,33 @@ using UnityEngine.XR.ARSubsystems;
 
 public class ObjectPlacer : MonoBehaviour
 {
-[SerializeField]
-private GameObject _prefabToPlace;
+    [SerializeField]
+    private GameObject _prefabToPlace;
 
-public ChoiceManager cm;
+    public ChoiceManager cm;
+    public AssetBundleGetter asb;
+    public UIControl Control;
 
-public UIControl Control;
+    // Cache ARRaycastManager GameObject from ARCoreSession
+    private ARRaycastManager _raycastManager;
+    private ARAnchorManager _anchorManager;
 
-// Cache ARRaycastManager GameObject from ARCoreSession
-private ARRaycastManager _raycastManager;
-private ARAnchorManager _anchorManager;
+    private static readonly List<ARRaycastHit> Hits = new List<ARRaycastHit>();
 
-private static readonly List<ARRaycastHit> Hits = new List<ARRaycastHit>();
+    private bool isAssetLoaded;
 
 void Awake()
 {
-_raycastManager = GetComponent<ARRaycastManager>();
-_anchorManager = GetComponent<ARAnchorManager>();
+    _raycastManager = GetComponent<ARRaycastManager>();
+    _anchorManager = GetComponent<ARAnchorManager>();
+    asb.worldReady.AddListener(AssetLoaded);
 }
+
+    void AssetLoaded()
+    {
+        Debug.Log("Asset loaded in object placer");
+        isAssetLoaded = true;
+    }
 
 ARAnchor CreateAnchor(in ARRaycastHit hit) {
     ARAnchor anchor;
@@ -59,6 +68,7 @@ ARAnchor CreateAnchor(in ARRaycastHit hit) {
         return; 
         }
         if (Control.Object_Style_CurrentActive != null) return;
+        if (!isAssetLoaded) return;
         if (_raycastManager.Raycast(touch.position, Hits, TrackableType.Planes)) {
             var hitPose = Hits[0].pose;
             Debug.Log("trying to instasiate anchor");
