@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
@@ -14,6 +15,8 @@ public class ChoiceManager : MonoBehaviour
 
     public GameObject LoadedAsset;
 
+    public TMP_Text InfoDebug;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,20 +24,14 @@ public class ChoiceManager : MonoBehaviour
         LoadedAsset = GameObject.FindGameObjectWithTag("LoadedAsset");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void setCurrentClothingLoaded()
     {
-        StartCoroutine(waitForClothLoad());
+        //StartCoroutine(waitForClothLoad());
     }
 
     IEnumerator waitForClothLoad()
     {
-        while(LoadedAsset.GetComponentsInChildren<Transform>().Length == 0)
+        while(LoadedAsset.GetComponentsInChildren<Transform>().Length < 1)
         {
             Debug.Log("Not Loaded");
             yield return null;
@@ -45,6 +42,7 @@ public class ChoiceManager : MonoBehaviour
         //child.transform.localPosition = new Vector3(0, 0, -100);
         child.transform.rotation = new Quaternion(0,180,0,0);
         currentClothing = child.name;
+        InfoDebug.text = child.name;
         Debug.Log("Created" + child.name);
     }
 

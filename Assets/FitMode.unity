@@ -1480,7 +1480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &177103746
 Transform:
   m_ObjectHideFlags: 0
@@ -2000,7 +2000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &223974227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13834,6 +13834,7 @@ MonoBehaviour:
   arCamera: {fileID: 22732924}
   arpm: {fileID: 388525032}
   LoadedAsset: {fileID: 0}
+  InfoDebug: {fileID: 223974227}
 --- !u!4 &1985308838
 Transform:
   m_ObjectHideFlags: 0
@@ -13896,7 +13897,7 @@ MonoBehaviour:
   bundleBaseURL: https://future-festivals.mrl.nottingham.ac.uk/Bundles/
   timeout: 120
   downloadProgress: 0
-  parentForWorld: {fileID: 177103746}
+  parentForWorld: {fileID: 22732924}
   assetbundleDatabaseReady:
     m_PersistentCalls:
       m_Calls: []

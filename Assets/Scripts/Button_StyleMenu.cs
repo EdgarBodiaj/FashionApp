@@ -33,6 +33,6 @@ public class Button_StyleMenu : MonoBehaviour
     void loadAsset(string asset)
     {
         Control.GetComponent<AssetBundleGetter>().startLoadAssetsForTicket(asset);
-        ChoiceManager.setCurrentClothingLoaded();
+        //ChoiceManager.setCurrentClothingLoaded();
     }
 }

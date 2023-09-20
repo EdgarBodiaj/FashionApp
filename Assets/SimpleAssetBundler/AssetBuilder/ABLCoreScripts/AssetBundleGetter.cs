@@ -178,6 +178,7 @@ public class AssetBundleGetter : MonoBehaviour
                 GameObject parent = Instantiate(bundle.LoadAsset<GameObject>(name), parentForWorld);
                 moveToStartPosition(parent);
                 parent.transform.localRotation = new Quaternion(0,180,0,0);
+                GetComponent<ChoiceManager>().currentClothing = parent.name;
             }
 
             if (scriptRegister != "")
@@ -202,6 +203,7 @@ public class AssetBundleGetter : MonoBehaviour
         while (downloading)
         {
             downloadProgress = request.downloadProgress;
+            GetComponent<ChoiceManager>().InfoDebug.SetText("" + request.downloadProgress);
             yield return null;
         }
         downloadComplete.Invoke();
