@@ -83,7 +83,6 @@ ARAnchor CreateAnchor(in ARRaycastHit hit) {
             clo.transform.localEulerAngles = new Vector3(0,180,0);
             //clo.transform.localEulerAngles = Vector3.zero;
             clo.transform.localPosition = Vector3.zero;
-            clo.transform.localScale = new Vector3(300,300,300);
             go.GetComponent<Renderer>().enabled = false;
 
             Control.Control_SetActiveObject(clo);
