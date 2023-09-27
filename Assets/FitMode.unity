@@ -3124,6 +3124,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4561052454199473207, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4561052455563166691, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -4380,6 +4385,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4561052454199473207, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4561052455563166691, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5181,6 +5191,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4561052454199473207, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4561052455563166691, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
         type: 3}
@@ -7196,8 +7211,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 339695665}
   m_HandleRect: {fileID: 811416644}
   m_Direction: 0
-  m_MinValue: 100
-  m_MaxValue: 500
+  m_MinValue: 10
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 100
   m_OnValueChanged:
@@ -8839,6 +8854,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4561052454199473207, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4561052455563166691, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
         type: 3}
@@ -10936,6 +10956,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4561052454199473207, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4561052455563166691, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -12566,6 +12591,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card
       objectReference: {fileID: 0}
+    - target: {fileID: 4561052454199473207, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4561052455563166691, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -13538,6 +13568,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4561052454199473207, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4561052455563166691, guid: 383043b8b78a1c44dbd38f98f84f9dbe,
         type: 3}
