@@ -135,9 +135,9 @@ public class UIControl : MonoBehaviour
             if (!Tool_ScaleSet)
             {
                 Tool_Object_Scale.GetComponent<Slider>().minValue = Object_Style_CurrentActive.transform.localScale.x / 10;
-                Tool_Object_Scale.GetComponent<Slider>().value = Object_Style_CurrentActive.transform.localScale.x;
                 Tool_Object_Scale.GetComponent<Slider>().maxValue = Object_Style_CurrentActive.transform.localScale.x;
-                
+                Tool_Object_Scale.GetComponent<Slider>().value = Tool_Object_Scale.GetComponent<Slider>().maxValue;
+
             }
             Object_Style_CurrentActive.transform.localScale = new Vector3(scale, scale, scale);
         }
