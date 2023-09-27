@@ -20,14 +20,12 @@ public class ObjectPlacer : MonoBehaviour
     private static readonly List<ARRaycastHit> Hits = new List<ARRaycastHit>();
 
     private bool isAssetLoaded;
-    private bool isAssetPlaced;
 
 void Awake()
 {
         _raycastManager = GetComponent<ARRaycastManager>();
         _anchorManager = GetComponent<ARAnchorManager>();
         asb.worldReady.AddListener(AssetLoaded);
-        if(GameObject.Find(cm.currentClothing) == null) isAssetPlaced = false;
 }
 
     void AssetLoaded()
@@ -71,7 +69,6 @@ ARAnchor CreateAnchor(in ARRaycastHit hit) {
         }
         if (Control.Object_Style_CurrentActive != null) return;
         if (!isAssetLoaded) return;
-        if (isAssetPlaced) return;
         if (_raycastManager.Raycast(touch.position, Hits, TrackableType.Planes)) {
             var hitPose = Hits[0].pose;
             Debug.Log("trying to instasiate anchor");
@@ -83,14 +80,14 @@ ARAnchor CreateAnchor(in ARRaycastHit hit) {
             Debug.Log("Found:"+clo.name);
             //attach to our newly instnsiated object and zero it's local position
             clo.transform.parent = go.transform;
-            clo.transform.localEulerAngles = Vector3.zero;
+            clo.transform.localEulerAngles = new Vector3(0,180,0);
+            //clo.transform.localEulerAngles = Vector3.zero;
             clo.transform.localPosition = Vector3.zero;
             go.GetComponent<Renderer>().enabled = false;
 
             Control.Control_SetActiveObject(clo);
 
             Debug.Log($"Instantiated on: {Hits[0].hitType}");
-            isAssetPlaced = true;
         } 
     }
 }
